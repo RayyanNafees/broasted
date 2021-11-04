@@ -17,6 +17,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import { mainListItems, secondaryListItems } from "./listItems";
+import { orange } from "@mui/material/colors";
 
 function Copyright(props) {
   return (
@@ -26,12 +27,11 @@ function Copyright(props) {
       align="center"
       {...props}
     >
-      {"Copyright © "}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
-      </Link>{" "}
-      {new Date().getFullYear()}
-      {"."}
+      Copyright © &nbsp;
+      <Link color="inherit" href="https://rayyannafees.github.io/">
+        Rayyan Nafees
+      </Link>
+      &nbsp; 2021.
     </Typography>
   );
 }
@@ -133,10 +133,11 @@ function Layout(props) {
             sx={{
               display: "flex",
               alignItems: "center",
-              justifyContent: "flex-end",
+              justifyContent: "space-between",
               px: [1],
             }}
           >
+            <Typography variant="h5" color="warning.main">Broasted</Typography>
             <IconButton onClick={toggleDrawer}>
               <ChevronLeftIcon />
             </IconButton>
