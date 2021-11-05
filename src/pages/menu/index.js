@@ -7,7 +7,7 @@ import fstore from "../../firebase";
 
 function Menu() {
   const [item, setItems] = useState([]);
-  const [combos, setCombos] = useState([]);
+  const [combo, setCombos] = useState([]);
   useEffect(() => {
     getDocs(collection(fstore, "items")).then((snap) =>
       setItems(snap.docs.map((doc) => doc.data()))
@@ -29,6 +29,15 @@ function Menu() {
       )),
     [item]
   );
+  const combos = useMemo(
+    () =>
+      combo.map((props, n) => (
+        <Grid item key={n}>
+          <ItemCard {...props}  />
+        </Grid>
+      )),
+    [combo]
+  );
 
   return (
     <Layout title="Menu">
@@ -44,6 +53,9 @@ function Menu() {
         <Typography variant="h3" mt={6} mb={3}>
           Combos
         </Typography>
+        <Grid container spacing={3}>
+          {combos}
+        </Grid>
       </Grid>
     </Layout>
   );

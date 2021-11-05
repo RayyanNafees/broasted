@@ -11,7 +11,7 @@ import Create from "@mui/icons-material/Create";
 import Delete from "@mui/icons-material/Delete";
 import image from "../../assets/burger.jpg";
 
-export default function ItemCard({ name, pcs, price }) {
+export default function ItemCard({ name, pcs, price, combo=false }) {
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardActionArea>
@@ -28,7 +28,7 @@ export default function ItemCard({ name, pcs, price }) {
           <Typography variant="body2" color="text.secondary">
             {typeof pcs === "string" ? pcs : pcs + " Pcs"}
           </Typography>
-          <Typography variant="h6" color="success.light">
+          <Typography variant="h5" color="success.light">
             {"₹ " + price}
           </Typography>
         </CardContent>
