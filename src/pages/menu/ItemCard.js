@@ -11,7 +11,7 @@ import Create from "@mui/icons-material/Create";
 import Delete from "@mui/icons-material/Delete";
 import image from "../../assets/burger.jpg";
 
-export default function ItemCard() {
+export default function ItemCard({ name, pcs, price }) {
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardActionArea>
@@ -23,11 +23,13 @@ export default function ItemCard() {
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
-            Lizard
+            {name}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            Lizards are a widespread group of squamate reptiles, with over 6,000
-            species, ranging across all continents except Antarctica
+            {typeof pcs === "string" ? pcs : pcs + " Pcs"}
+          </Typography>
+          <Typography variant="h6" color="success.light">
+            {"₹ " + price}
           </Typography>
         </CardContent>
       </CardActionArea>
@@ -51,7 +53,7 @@ export default function ItemCard() {
           <Grid item>
             <Button
               size="small"
-            //   color="warning"
+              color="error"
               variant="outlined"
               startIcon={<Delete />}
             >
