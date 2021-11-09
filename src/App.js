@@ -1,5 +1,4 @@
 import "./App.css";
-import { PersistGate } from "redux-persist/integration/react";
 import Dashboard from "./pages/dashboard";
 import Loader from "./pages/dashboard/Loader";
 import Orders from "./pages/orders";
@@ -8,7 +7,7 @@ import Settings from "./pages/settings";
 import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { Provider } from "react-redux";
-import store, { persistor } from "./reducers";
+import store from "./reducers";
 
 const Redirect = () => {
   const navigate = useNavigate();

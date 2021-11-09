@@ -11,10 +11,12 @@ export default function Loader() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  Promise.all([get_items(dispatch), get_combos(dispatch)]).then(() => {
-    setOpen(false);
-    navigate("/dashboard");
-  });
+  useEffect(() => {
+    Promise.all([get_items(dispatch), get_combos(dispatch)]).then(() => {
+      setOpen(false);
+      navigate("/dashboard");
+    });
+  }, [dispatch, navigate]);
 
   return (
     <Dialog fullScreen open={open}>

@@ -1,4 +1,4 @@
-export default (state = { items: [], combos: [] }, action) => {
+const menu = (state = { items: [], combos: [] }, action) => {
   switch (action.type) {
     case "GET_ITEMS":
       return { ...state, items: action.payload };
@@ -8,3 +8,5 @@ export default (state = { items: [], combos: [] }, action) => {
       return state;
   }
 };
+
+export default menu;
