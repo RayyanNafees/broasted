@@ -1,42 +1,29 @@
 import Layout from "../layout";
 import { Grid, Typography } from "@mui/material";
 import ItemCard from "./ItemCard";
-import { useEffect, useState, useMemo } from "react";
-import { getDocs, collection } from "firebase/firestore";
-import fstore from "../../firebase";
+import { useMemo } from "react";
+import { useSelector } from "react-redux";
 
 function Menu() {
-  const [item, setItems] = useState([]);
-  const [combo, setCombos] = useState([]);
-  useEffect(() => {
-    getDocs(collection(fstore, "items")).then((snap) =>
-      setItems(snap.docs.map((doc) => doc.data()))
-    );
-  }, []);
-
-  useEffect(() => {
-    getDocs(collection(fstore, "combos")).then((snap) =>
-      setCombos(snap.docs.map((doc) => doc.data()))
-    );
-  }, []);
+  const { menu } = useSelector((s) => s);
 
   const items = useMemo(
     () =>
-      item.map((props, n) => (
+      menu.items.map((props, n) => (
         <Grid item key={n}>
           <ItemCard {...props} />
         </Grid>
       )),
-    [item]
+    [menu.items]
   );
   const combos = useMemo(
     () =>
-      combo.map((props, n) => (
+      menu.combos.map((props, n) => (
         <Grid item key={n}>
-          <ItemCard {...props}  />
+          <ItemCard {...props} />
         </Grid>
       )),
-    [combo]
+    [menu.combos]
   );
 
   return (

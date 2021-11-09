@@ -11,6 +11,7 @@ import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
 import Badge from "@mui/material/Badge";
 import Container from "@mui/material/Container";
+import Grid from "@mui/material/Grid";
 
 import Link from "@mui/material/Link";
 import MenuIcon from "@mui/icons-material/Menu";
@@ -27,7 +28,11 @@ function Copyright(props) {
       {...props}
     >
       Copyright © &nbsp;
-      <Link color="inherit" href="https://rayyannafees.github.io/">
+      <Link
+        color="inherit"
+        href="https://rayyannafees.github.io/"
+        target="_blank"
+      >
         Rayyan Nafees
       </Link>
       &nbsp; 2021.
@@ -111,15 +116,33 @@ function Layout(props) {
             >
               <MenuIcon />
             </IconButton>
-            <Typography
-              component="h1"
-              variant="h6"
-              color="inherit"
-              noWrap
-              sx={{ flexGrow: 1 }}
+            <Grid
+              container
+              direction="column"
+              justifyContent="center"
+              alignItems="flex-start"
             >
-              {props.title}
-            </Typography>
+              <Typography
+                component="h1"
+                variant="h6"
+                color="inherit"
+                noWrap
+                sx={{ flexGrow: 1 }}
+              >
+                {props.title}
+              </Typography>
+              {props.subtitle && (
+                <Typography
+                  component="code"
+                  variant="subtitle"
+                  color="inherit"
+                  noWrap
+                  sx={{ flexGrow: 1 }}
+                >
+                  {props.subtitle}
+                </Typography>
+              )}
+            </Grid>
             <IconButton color="inherit">
               <Badge badgeContent={4} color="secondary">
                 <NotificationsIcon />
@@ -136,7 +159,9 @@ function Layout(props) {
               px: [1],
             }}
           >
-            <Typography variant="h5" color="warning.main">Broasted</Typography>
+            <Typography variant="h5" color="warning.main">
+              Broasted
+            </Typography>
             <IconButton onClick={toggleDrawer}>
               <ChevronLeftIcon />
             </IconButton>
