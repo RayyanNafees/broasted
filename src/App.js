@@ -1,6 +1,6 @@
 import "./App.css";
 import Dashboard from "./pages/dashboard";
-import Loader from "./pages/dashboard/Loader";
+import Loader from "./pages/Loader";
 import Orders from "./pages/orders";
 import Menu from "./pages/menu";
 import Settings from "./pages/settings";

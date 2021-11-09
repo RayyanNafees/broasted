@@ -1,5 +1,5 @@
-export default (name) =>
-  (state = {}, action) => {
+export default (name, initialState={}) =>
+  (state = initialState, action) => {
     switch (action.type) {
       case name:
         return action.payload;

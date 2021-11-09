@@ -11,7 +11,9 @@ import Create from "@mui/icons-material/Create";
 import Delete from "@mui/icons-material/Delete";
 import image from "../../assets/burger.jpg";
 
-export default function ItemCard({ name, pcs, price, combo=false }) {
+const _pcs = pcs => typeof pcs === "string" ? pcs : pcs + " Pcs"
+
+export default function ItemCard({ name, pcs, price, editable = false }) {
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardActionArea>
@@ -26,42 +28,44 @@ export default function ItemCard({ name, pcs, price, combo=false }) {
             {name}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {typeof pcs === "string" ? pcs : pcs + " Pcs"}
+            {_pcs(pcs)}
           </Typography>
           <Typography variant="h5" color="success.light">
             {"₹ " + price}
           </Typography>
         </CardContent>
       </CardActionArea>
-      <CardActions>
-        <Grid
-          container
-          direction="row"
-          justifyContent="space-between"
-          alignItems="center"
-        >
-          <Grid item>
-            <Button
-              size="small"
-              color="primary"
-              variant="contained"
-              startIcon={<Create />}
-            >
-              Edit
-            </Button>
+      {editable && (
+        <CardActions>
+          <Grid
+            container
+            direction="row"
+            justifyContent="space-between"
+            alignItems="center"
+          >
+            <Grid item>
+              <Button
+                size="small"
+                color="primary"
+                variant="contained"
+                startIcon={<Create />}
+              >
+                Edit
+              </Button>
+            </Grid>
+            <Grid item>
+              <Button
+                size="small"
+                color="error"
+                variant="outlined"
+                startIcon={<Delete />}
+              >
+                Delete
+              </Button>
+            </Grid>
           </Grid>
-          <Grid item>
-            <Button
-              size="small"
-              color="error"
-              variant="outlined"
-              startIcon={<Delete />}
-            >
-              Delete
-            </Button>
-          </Grid>
-        </Grid>
-      </CardActions>
+        </CardActions>
+      )}
     </Card>
   );
 }
